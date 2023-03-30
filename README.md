@@ -15,7 +15,10 @@
 
 ## News
 
-- **(2023/3/29)** BEVFusion is released on [arXiv](https://arxiv.org/abs/2303.16818).
+- **(2023/3/29)** BEVSimDet is released on [arXiv](https://arxiv.org/abs/2303.16818).
+
+> Other applications of [ViTAE Transformer](https://github.com/ViTAE-Transformer/ViTAE-Transformer) include: [image classification](https://github.com/ViTAE-Transformer/ViTAE-Transformer/tree/main/Image-Classification) | [object detection (ViTDet)](https://github.com/ViTAE-Transformer/ViTAE-Transformer/tree/main/Object-Detection) | [semantic segmentation](https://github.com/ViTAE-Transformer/ViTAE-Transformer/tree/main/Semantic-Segmentation) | [pose segmentation](https://github.com/ViTAE-Transformer/ViTPose) | [remote sensing (RVSA)](https://github.com/ViTAE-Transformer/ViTAE-Transformer-Remote-Sensing)｜[image matting](https://github.com/ViTAE-Transformer/ViTAE-Transformer-Matting)| [scene text spotting (DeepSolo)](https://github.com/ViTAE-Transformer/ViTAE-Transformer-Scene-Text-Detection)
+
 
 ## Abstract
 
