@@ -13,11 +13,11 @@ Multi-view camera-based 3D object detection has gained popularity due to its low
 ## Results
 
 ### Quantitative results on Nuscenes val
-|        Model         | Modality | Camera Backbone | mAP  | NDS  | 
-| :------------------: | :------: |:--------------: | :--: | :--: | 
-| [BEVFusion-C] |    C     | SwinT | 35.5 | 41.2 |
-| [BEVSimDet] |    C     | SwinT | 40.4 | 45.3 |
-| [BEVSimDet] |    C     | ViTAEv2-S | 40.1 | 46.3 |
+|        Model         | Modality | Camera Backbone | mAP  | NDS  | ckpt |
+| :------------------: | :------: |:--------------: | :--: | :--: | :--: |
+| [BEVFusion-C] |    C     | SwinT | 35.5 | 41.2 |-|
+| [BEVSimDet] |    C     | SwinT | 40.4 | 45.3 |-|
+| [BEVSimDet] |    C     | ViTAEv2-S | 40.1 | 46.3 |-|
 ### Qualitative results
 ![qualitative figure](./figs/visualization.png "framework")
 ![qualitative figure](./figs/supplementary-lidar.png "framework")
