@@ -85,4 +85,9 @@ mmdetection3d
 ### Codes coming soon...
 
 ## Statement
-
+@article{zhao2023bevsimdet,  
+  title={BEVSimDet: Simulated Multi-modal Distillation in Bird's-Eye View for Multi-view 3D Object Detection},  
+  author={Zhao, Haimei and Zhang, Qiming and Zhao, Shanshan and Zhang, Jing and Tao, Dacheng},  
+  journal={arXiv preprint arXiv:2303.16818},  
+  year={2023}  
+}  
