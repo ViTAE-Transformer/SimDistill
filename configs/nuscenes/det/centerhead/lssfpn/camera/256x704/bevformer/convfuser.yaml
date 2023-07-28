@@ -1,0 +1,55 @@
+model:
+  encoders:
+          #    camera:
+     #vtransform:
+     #  type: LSSTransform
+     #  image_size: ${image_size}
+     #  xbound: [-51.2, 51.2, 0.8]
+     #  ybound: [-51.2, 51.2, 0.8]
+     #  zbound: [-10.0, 10.0, 20.0]
+     #  dbound: [1.0, 60.0, 1.0]
+    fusion_feature: True
+    plidar_feature: True
+    plidar_mask: True
+    depth_feature: False
+    depth_sup: False
+    img_feature: False
+    sem_feature: False
+    prediction_distill: False
+    bev_DeformAttn: True
+    bev_Deform: False
+  fuser:
+    type: ConvFuser
+    in_channels: [80, 256]
+    out_channels: 256
+  fuser_student:
+    type: ConvFuser
+    in_channels: [80, 80]
+    out_channels: 256
+  trans_student:
+    type: ConvFuser
+    in_channels: [80]
+    out_channels: 256
+find_unused_parameters: True
+#optimizer_config:
+#  cumulative_iters: 3
+optimizer:
+  type: AdamW
+  lr: 2e-4
+  paramwise_cfg:
+    custom_keys:
+      img_backbone:
+        lr_mult: 0.1
+  weight_decay: 0.01
+#optimizer:
+#  lr: 5.0e-6
+optimizer_config:
+  grad_clip:
+    max_norm: 35
+    norm_type: 2
+lr_config:
+  policy: CosineAnnealing
+  warmup: linear
+  warmup_iters: 500
+  warmup_ratio: 1.0 / 3
+  min_lr_ratio: 1e-3

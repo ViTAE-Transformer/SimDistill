@@ -1,0 +1,94 @@
+voxel_size: [0.075, 0.075, 0.2]
+point_cloud_range: [-54.0, -54.0, -5.0, 54.0, 54.0, 3.0]
+#voxel_size: [0.1, 0.1, 0.2]
+#point_cloud_range: [-51.2, -51.2, -5.0, 51.2, 51.2, 3.0]
+model:
+  encoders:
+    camera:
+      backbone:
+        type: ResNet
+        num_stages: 4
+        out_indices: [1, 2, 3]
+        depth: 50
+        with_cp: false
+        norm_cfg:
+          type: BN2d
+        dcn:
+          type: DCNv2
+          deform_groups: 1
+          fallback_on_stride: False
+        stage_with_dcn: [False, False, True, True]
+        init_cfg:
+          type: Pretrained
+          checkpoint: /docker-home/data/qiming/pretrained/fcos3d_r50_for_simdet.pth #/CV/users/zhaohaimei3/Vitae-Object-Detection/work_dirs/cascade_mask_rcnn_vitaev2_s_mstrain_480-800_giou_4conv1f_adamw_3x_nuimage/epoch_36.pth
+      neck:
+        type: GeneralizedLSSFPN
+        in_channels: [512, 1024, 2048]
+        out_channels: 256
+        start_level: 0
+        num_outs: 3
+        norm_cfg:
+          type: BN2d
+          requires_grad: true
+        act_cfg:
+          type: ReLU
+          inplace: true
+        upsample_cfg:
+          mode: bilinear
+          align_corners: false      
+      vtransform:
+        in_channels: 256
+        out_channels: 80
+        feature_size: ${[image_size[0] // 8, image_size[1] // 8]}
+        xbound: [-54.0, 54.0, 0.3] #[-51.2, 51.2, 0.4]
+        ybound: [-54.0, 54.0, 0.3] #[-51.2, 51.2, 0.4]
+        zbound: [-10.0, 10.0, 20.0]
+        dbound: [1.0, 60.0, 0.5]
+        downsample: 2
+    lidar:
+      voxelize:
+        point_cloud_range: ${point_cloud_range}
+        voxel_size: ${voxel_size}
+        max_voxels: [ 120000, 160000 ]
+      backbone:
+        sparse_shape: [ 1440, 1440, 41 ]
+  decoder:
+    backbone:
+      type: GeneralizedResNet
+      in_channels: 256
+      blocks:
+        - [2, 128, 2]
+        - [2, 256, 2]
+        - [2, 512, 1]
+    neck:
+      type: LSSFPN
+      in_indices: [-1, 0]
+      in_channels: [512, 128]
+      out_channels: 256
+      scale_factor: 2
+
+optimizer:
+  paramwise_cfg:
+    custom_keys:
+      absolute_pos_embed:
+        decay_mult: 0
+      relative_position_bias_table:
+        decay_mult: 0
+      encoders.camera.backbone:
+        lr_mult: 0.1
+
+
+lr_config:
+  policy: CosineAnnealing
+  warmup: linear
+  warmup_iters: 500
+  warmup_ratio: 0.33333333
+  min_lr_ratio: 1.0e-3
+
+momentum_config:
+  policy: cyclic
+  cyclic_times: 1
+  step_ratio_up: 0.4
+
+data:
+  samples_per_gpu: 6

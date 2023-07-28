@@ -1,0 +1,72 @@
+augment3d:
+  scale: [0.95, 1.05]
+  rotate: [-0.3925, 0.3925]
+  translate: 0
+
+model:
+  encoders:
+    lidar:
+      voxelize:
+        max_num_points: 10
+        point_cloud_range: ${point_cloud_range}
+        voxel_size: ${voxel_size}
+        max_voxels: [ 90000, 120000 ]
+      backbone:
+        type: SparseEncoder
+        in_channels: 5
+        sparse_shape: [ 1024, 1024, 41 ]
+        output_channels: 128
+        order:
+          - conv
+          - norm
+          - act
+        encoder_channels:
+          - [ 16, 16, 32 ]
+          - [ 32, 32, 64 ]
+          - [ 64, 64, 128 ]
+          - [ 128, 128 ]
+        encoder_paddings:
+          - [ 0, 0, 1 ]
+          - [ 0, 0, 1 ]
+          - [ 0, 0, [ 1, 1, 0 ] ]
+          - [ 0, 0 ]
+        block_type: basicblock
+    camera:
+      vtransform:
+        type: DepthLSSTransform
+        in_channels: 256
+        out_channels: 80
+        image_size: ${image_size}
+        feature_size: ${[image_size[0] // 8, image_size[1] // 8]}
+        xbound: [ -54.0, 54.0, 0.3 ]
+        ybound: [ -54.0, 54.0, 0.3 ]
+        zbound: [ -10.0, 10.0, 20.0 ]
+        dbound: [ 1.0, 60.0, 0.5 ]
+        downsample: 2
+#      vtransform:
+#        type: LSSTransform
+#        image_size: ${image_size}
+#        xbound: [-51.2, 51.2, 0.8]
+#        ybound: [-51.2, 51.2, 0.8]
+#        zbound: [-10.0, 10.0, 20.0]
+#        dbound: [1.0, 60.0, 1.0]
+
+  heads:
+    object:
+      test_cfg:
+        nms_type:
+          - circle
+          - rotate
+          - rotate
+          - circle
+          - rotate
+          - rotate
+        nms_scale:
+          - [1.0]
+          - [1.0, 1.0]
+          - [1.0, 1.0]
+          - [1.0]
+          - [1.0, 1.0]
+          - [2.5, 4.0]
+
+lr_config: null
