@@ -1,7 +1,7 @@
-<h1 align="center">BEVSimDet: Simulated Multi-modal Distillation in Bird’s-Eye View for Multi-view 3D Object Detection</h1>
+<h1 align="center">SimDistill: Simulated Multi-modal Distillation for BEV 3D Object Detection</h1>
 <p align="center">
 <a href="https://arxiv.org/abs/2303.16818"><img  src="https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg" ></a>
-<h4 align="center">This is the official repository of the paper <a href="https://arxiv.org/abs/2303.16818">BEVSimDet: Simulated Multi-modal Distillation in Bird’s-Eye View for Multi-view 3D Object Detection</a>.</h4>
+<h4 align="center">This is the official repository of the paper <a href="https://arxiv.org/abs/2303.16818">SimDistill: Simulated Multi-modal Distillation for BEV 3D Object Detection</a>.</h4>
 <h5 align="center"><em>Haimei Zhao, Qiming Zhang, Shanshan Zhao, Jing Zhang, and Dacheng Tao</em></h5>
 <p align="center">
   <a href="#news">News</a> |
@@ -14,7 +14,7 @@
 </p>
 
 ## News
-
+- **(2023/3/29)** SimDistill is accepted by AAAI 2024!.
 - **(2023/3/29)** BEVSimDet is released on [arXiv](https://arxiv.org/abs/2303.16818).
 
 > Other applications of [ViTAE Transformer](https://github.com/ViTAE-Transformer/ViTAE-Transformer) include: [image classification](https://github.com/ViTAE-Transformer/ViTAE-Transformer/tree/main/Image-Classification) | [object detection](https://github.com/ViTAE-Transformer/ViTAE-Transformer/tree/main/Object-Detection) | [semantic segmentation](https://github.com/ViTAE-Transformer/ViTAE-Transformer/tree/main/Semantic-Segmentation) | [pose estimation](https://github.com/ViTAE-Transformer/ViTPose) | [remote sensing](https://github.com/ViTAE-Transformer/ViTAE-Transformer-Remote-Sensing)｜[image matting](https://github.com/ViTAE-Transformer/ViTAE-Transformer-Matting) | [scene text spotting](https://github.com/ViTAE-Transformer/ViTAE-Transformer-Scene-Text-Detection)
@@ -22,7 +22,7 @@
 
 ## Abstract
 
-Multi-view camera-based 3D object detection has gained popularity due to its low cost. But accurately inferring 3D geometry solely from camera data remains challenging, which impacts model performance. One promising approach to address this issue is to distill precise 3D geometry knowledge from LiDAR data. However, transferring knowledge between different sensor modalities is hindered by the significant modality gap. In this paper, we approach this challenge from the perspective of both architecture design and knowledge distillation and present a new simulated multi-modal 3D object detection method named BEVSimDet. We first introduce a novel framework that includes a LiDAR and camera fusion-based teacher and a simulated multi-modal student, where the student simulates multi-modal features with image-only input. To facilitate effective distillation, we propose a simulated multi-modal distillation scheme that supports intra-modal, cross-modal, and multi-modal distillation simultaneously. By combining them together, BEVSimDet can learn better feature representations for 3D object detection while enjoying cost-effective camera-only deployment. Experimental results on the challenging nuScenes benchmark demonstrate the effectiveness and superiority of BEVSimDet over recent representative methods.
+Multi-view camera-based 3D object detection has become popular due to its low cost, but accurately inferring 3D geometry solely from camera data remains challenging and may lead to inferior performance. Although distilling precise 3D geometry knowledge from LiDAR data could help tackle this challenge, the benefits of LiDAR information could be greatly hindered by the significant modality gap between different sensory modalities. To address this issue, we propose a \textbf{Si}mulated \textbf{m}ulti-modal \textbf{Distill}ation (\textbf{SimDistill}) method by carefully crafting the model architecture and distillation strategy. Specifically, we devise multi-modal architectures for both teacher and student models, including a LiDAR-camera fusion-based teacher and a simulated fusion-based student. Owing to the ``identical'' architecture design, the student can mimic the teacher to generate multi-modal features with merely multi-view images as input, where a geometry compensation module is introduced to bridge the modality gap. Furthermore, we propose a comprehensive multi-modal distillation scheme that supports intra-modal, cross-modal, and multi-modal fusion distillation simultaneously in the Bird's-eye-view space. Incorporating them together, our SimDistill can learn better feature representations for 3D object detection while maintaining a cost-effective camera-only deployment. Extensive experiments validate the effectiveness and superiority of SimDistill over state-of-the-art methods, achieving an improvement of 4.8\% mAP and 4.1\% NDS over the baseline detector.
 ## Method
 
 ![the framework figure](./figs/mainfigure.png "framework")
