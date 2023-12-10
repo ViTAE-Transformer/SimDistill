@@ -2,7 +2,7 @@
 <p align="center">
 <a href="https://arxiv.org/abs/2303.16818"><img  src="https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg" ></a>
 <h4 align="center">This is the official repository of the paper <a href="https://arxiv.org/abs/2303.16818">SimDistill: Simulated Multi-modal Distillation for BEV 3D Object Detection</a>.</h4>
-<h5 align="center"><em>Haimei Zhao, Qiming Zhang, Shanshan Zhao, Jing Zhang, and Dacheng Tao</em></h5>
+<h5 align="center"><em>Haimei Zhao, Qiming Zhang, Shanshan Zhao, Zhe Chen, Jing Zhang, and Dacheng Tao</em></h5>
 <p align="center">
   <a href="#news">News</a> |
   <a href="#abstract">Abstract</a> |
