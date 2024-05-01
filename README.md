@@ -91,3 +91,13 @@ mmdetection3d
   journal={arXiv preprint arXiv:2303.16818},  
   year={2023}  
 }  
+or
+@inproceedings{zhao2024simdistill,
+  title={SimDistill: Simulated Multi-Modal Distillation for BEV 3D Object Detection},
+  author={Zhao, Haimei and Zhang, Qiming and Zhao, Shanshan and Chen, Zhe and Zhang, Jing and Tao, Dacheng},
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume={38},
+  number={7},
+  pages={7460--7468},
+  year={2024}
+}
