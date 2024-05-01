@@ -82,7 +82,20 @@ mmdetection3d
 ```
 
 ## Code
-### Codes coming soon...
+### Setup
+```bash
+python setup.py develop
+```
+### Training
+```bash
+different loss items should be changed in configs/nuscenes/det/centerhead/lssfpn/camera/256x704/swint/convfuser.yaml
+
+torchpack dist-run -np 8 python tools/train.py configs/nuscenes/det/centerhead/lssfpn/camera/256x704/swint/convfuser.yaml --data.samples_per_gpu 3 --max_epochs 20 --data.workers_per_gpu 6 --run-dir swinT-twobranchesloss --load_from ../bevfusion-main/pretrained/bevfusion-det.pth
+```
+### Evaluation
+```bash
+torchpack dist-run -np 8 python tools/test.py configs/nuscenes/det/centerhead/lssfpn/camera/256x704/swint/convfuser.yaml --xxx.pth --eval bbox
+```
 
 ## Statement
 @article{zhao2023bevsimdet,  
