@@ -25,15 +25,15 @@
 Multi-view camera-based 3D object detection has become popular due to its low cost, but accurately inferring 3D geometry solely from camera data remains challenging and may lead to inferior performance. Although distilling precise 3D geometry knowledge from LiDAR data could help tackle this challenge, the benefits of LiDAR information could be greatly hindered by the significant modality gap between different sensory modalities. To address this issue, we propose a \textbf{Si}mulated \textbf{m}ulti-modal \textbf{Distill}ation (\textbf{SimDistill}) method by carefully crafting the model architecture and distillation strategy. Specifically, we devise multi-modal architectures for both teacher and student models, including a LiDAR-camera fusion-based teacher and a simulated fusion-based student. Owing to the ``identical'' architecture design, the student can mimic the teacher to generate multi-modal features with merely multi-view images as input, where a geometry compensation module is introduced to bridge the modality gap. Furthermore, we propose a comprehensive multi-modal distillation scheme that supports intra-modal, cross-modal, and multi-modal fusion distillation simultaneously in the Bird's-eye-view space. Incorporating them together, our SimDistill can learn better feature representations for 3D object detection while maintaining a cost-effective camera-only deployment. Extensive experiments validate the effectiveness and superiority of SimDistill over state-of-the-art methods, achieving an improvement of 4.8\% mAP and 4.1\% NDS over the baseline detector.
 ## Method
 
-![the framework figure](./figs/mainfigure.png "framework")
+![the framework figure](./docker/mainfigure.png "framework")
 ## Results
 
 ### Quantitative results on Nuscenes validation set
-![quantitative figure](./figs/quantitative-results.png "quantitative-results")
+![quantitative figure](./docker/quantitative-results.png "quantitative-results")
 ### Qualitative results
-![qualitative figure](./figs/visualization.png "visualization")
-![qualitative figure](./figs/supplementary-lidar.png "supplementary-lidar")
-![qualitative figure](./figs/supplementary-prediction1.png "supplementary-prediction1")
+![qualitative figure](./docker/visualization.png "visualization")
+![qualitative figure](./docker/supplementary-lidar.png "supplementary-lidar")
+![qualitative figure](./docker/supplementary-prediction1.png "supplementary-prediction1")
 ## Preparation
 
 ### Prerequisites
